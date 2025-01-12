@@ -1,10 +1,10 @@
 {
-    "name": "uv",
+    "name": "jax-ai-project",
     "build": {
         "context": "..",
         "dockerfile": "Dockerfile",
         "args": {
-            "UV_VERSION": "0.5.13",
+            "UV_VERSION": "latest",
             "DEBIAN_VERSION": "bookworm"
         }
     },
@@ -31,6 +31,7 @@
     "containerEnv": {
         "DISPLAY": "dummy",
         "PYTHONUNBUFFERED": "True",
+        "UV_PREVIEW": "true",
         "UV_LINK_MODE": "copy",
         "UV_PROJECT_ENVIRONMENT": "/home/vscode/.venv"
     },
