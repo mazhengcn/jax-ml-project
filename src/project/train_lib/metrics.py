@@ -1,5 +1,3 @@
-import typing as tp
-
 import jax
 import jax.numpy as jnp
 from flax import nnx
@@ -29,7 +27,7 @@ class RelativeError(nnx.Metric):
         self.error.value = jnp.array(0, dtype=jnp.float32)
         self.true.value = jnp.array(0, dtype=jnp.float32)
 
-    def update(self, **kwargs: dict[str, tp.Any]) -> None:
+    def update(self, **kwargs) -> None:  # noqa: ANN003
         """Update the metric state with new values.
 
         Args:
