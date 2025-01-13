@@ -3,12 +3,12 @@ import typing as tp
 from collections.abc import Iterable, Iterator
 from functools import partial
 
+import grain.python as grain
 import jax
 import jax.tree_util as jtu
 import numpy as np
 import tensorflow as tf
 from absl import logging
-from clu.data import dataset_iterator
 from jax.sharding import Mesh, NamedSharding, PartitionSpec
 
 PyTree = tp.Any
@@ -20,26 +20,6 @@ SLEEP_TIME = 10
 MAX_DATA_LOAD_ATTEMPTS = 30
 
 _DATALOADER_TYPE_ERROR = "dataloader should be either tf.data.Dataset or Iterable"
-
-
-def get_dataset_shape_dtype_struct(
-    iterator: tf.data.Dataset | dataset_iterator.DatasetIterator,
-    global_mesh: Mesh,
-    data_pspec: PartitionSpec,
-) -> PyTree:
-    """Return the jax.ShapeDtypeStruct."""
-    sharding = NamedSharding(global_mesh, data_pspec)
-
-    def fn(x: np.ndarray) -> jax.ShapeDtypeStruct:
-        # Dtype and local shape (of this particular process) of the given array x.
-        shape, dtype = x.shape, x.dtype
-        dtype = dtype.as_numpy_dtype if hasattr(dtype, "as_numpy_dtype") else dtype
-        # Global shape
-        shape = (shape[0] * jax.process_count(),) + shape[1:]
-        # Return a ShapeDtypeStruct with the global shape and sharding.
-        return jax.ShapeDtypeStruct(shape=shape, dtype=dtype, sharding=sharding)
-
-    return jax.tree.map(fn, iterator.element_spec)
 
 
 def _build_global_shape_and_sharding(
@@ -111,7 +91,7 @@ class MultiHostDataLoadIterator:
 
     def __init__(
         self,
-        dataloader: tf.data.Dataset,
+        dataloader: tf.data.Dataset | grain.DataLoader,
         global_mesh: Mesh,
         data_pspec: PartitionSpec | None = None,
     ) -> None:
@@ -131,7 +111,9 @@ class MultiHostDataLoadIterator:
             self.data_pspec = PartitionSpec(global_mesh.axis_names)
         if isinstance(self.dataloader, tf.data.Dataset):
             self.local_iterator = self.dataloader.as_numpy_iterator()
-        if isinstance(self.dataloader, Iterable):
+        elif isinstance(self.dataloader, Iterable):
+            self.local_iterator = iter(self.dataloader)
+        else:
             raise TypeError(_DATALOADER_TYPE_ERROR)
 
     def reset(self) -> None:
