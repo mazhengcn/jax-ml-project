@@ -53,7 +53,7 @@ def save_checkpoint(
     step: int,
     train_state: nnx.State,
     dataset_type: str = "tfds",
-    data_iterator: MultiHostDataLoadIterator | None = None,
+    data_iterator: MultiHostDataLoadIterator | tp.Iterable | None = None,
 ) -> bool:
     """Save checkpoint using the checkpoint manager.
 
@@ -84,7 +84,7 @@ def save_checkpoint(
 
 def load_state_if_possible(  # noqa: PLR0913
     checkpoint_manager: ocp.CheckpointManager | None,
-    data_iterator: MultiHostDataLoadIterator | None,
+    data_iterator: MultiHostDataLoadIterator | tp.Iterable | None,
     load_parameters_from_path: str,
     load_full_state_from_path: str,
     abstract_train_state: nnx.State,

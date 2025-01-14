@@ -161,7 +161,7 @@ def train_and_evaluate(config: default.Config, workdir: str) -> None:  # noqa: C
     # ---------------------------------------------------------------------------
     logging.info("Initializing train state.")
     model, optimizer, train_iter = train_utils.setup_training_state(
-        model_class=Model,
+        model_class=Model,  # type: ignore[arg-type]
         config=config,
         rng=init_rng,
         tx=tx,
