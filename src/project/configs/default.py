@@ -25,7 +25,7 @@ class Config:
     grain_worker_count: int | None = 4
     # Count of output batches to produce in advance per worker.
     # This ensures batches are ready when the consumer requests them.
-    grain_worker_buffer_size: int | None = 1
+    grain_worker_buffer_size: int = 1
     # Name of TFDS dataset to use.
     dataset_name: str = "rte/g0.5-sigma_a3-sigma_t6"
     # Path to directory where TFDS data is stored.
