@@ -13,7 +13,7 @@ license = { file = "LICENSE" }
 dependencies = [
     "clu>=0.0.12",
     "google-cloud-logging>=3.11.3",
-    "jax-ai-stack[grain,tfds]>=2025.1.9",
+    "jax-ai-stack[grain]>=2025.1.9",
     "jax[cuda]>=0.4.38",
     "pydantic>=2.10.4",
     "pydantic-settings>=2.7.0",
