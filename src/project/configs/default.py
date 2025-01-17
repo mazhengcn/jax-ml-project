@@ -18,18 +18,18 @@ class Config:
     # Integer for PRNG random seed.
     seed: int = 42
     # Dataset type.
-    dataset_type: str = "tfds"
+    dataset_type: str = "grain"
     # Number of child processes launched to parallelize the transformations among.
     # Zero means processing runs in the same process.
     # None lets the python backend choose the value.
-    grain_worker_count: int | None = 4
+    grain_worker_count: int | None = 0
     # Count of output batches to produce in advance per worker.
     # This ensures batches are ready when the consumer requests them.
     grain_worker_buffer_size: int = 1
     # Name of TFDS dataset to use.
-    dataset_name: str = "rte/g0.5-sigma_a3-sigma_t6"
+    dataset_name: str = "dataset"
     # Path to directory where TFDS data is stored.
-    data_dir: str = "/workspaces/deeprte/data/tfds"
+    data_dir: str = "/workspaces/deeprte/data/raw_data/train"
     # TFDS split for training dataset.
     train_split: str = "train[:80%]"
     # TFDS split for evaluation dataset.
@@ -42,11 +42,6 @@ class Config:
     per_device_batch_size: int = 1
     # Global batch size for training.
     global_batch_size: int = 8
-    # Number of collocation points to sample from phase space for training.
-    collocation_size: int | None = 128
-    # Number of same batch with different collocation points (in order to
-    # increase collocation sizes for training).
-    repeat_batch: int = 1
     # Global batch size for evaluation.
     eval_batch_size: int = 4
     # Number of steps to train for.
