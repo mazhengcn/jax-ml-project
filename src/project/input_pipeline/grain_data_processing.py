@@ -61,8 +61,6 @@ def preprocessing_pipeline(  # noqa: PLR0913
     data_pspec: PartitionSpec,
     worker_count: int | None = 0,
     worker_buffer_size: int = 1,
-    dataloading_host_index: int,
-    dataloading_host_count: int,
     shuffle: bool = False,
     data_shuffle_seed: int = 0,
     num_epochs: int | None = 1,
@@ -84,11 +82,7 @@ def preprocessing_pipeline(  # noqa: PLR0913
     index_sampler = grain.IndexSampler(
         num_records=len(dataset),
         num_epochs=num_epochs,
-        shard_options=grain.ShardOptions(
-            shard_index=dataloading_host_index,
-            shard_count=dataloading_host_count,
-            drop_remainder=drop_remainder,
-        ),
+        shard_options=grain.ShardByJaxProcess(),
         shuffle=shuffle,
         seed=data_shuffle_seed,
     )
@@ -106,7 +100,7 @@ def preprocessing_pipeline(  # noqa: PLR0913
 
 
 def make_grain_iterator(
-    config: default.Config, global_mesh: Mesh, process_indices: list[int]
+    config: default.Config, global_mesh: Mesh
 ) -> tuple[tp.Iterator, tp.Iterator | None]:
     """Load dataset, preprocess and return iterators."""
     train_ds = get_datasets(
@@ -122,8 +116,6 @@ def make_grain_iterator(
         data_pspec=PartitionSpec(*config.data_sharding),
         worker_count=config.grain_worker_count,
         worker_buffer_size=config.grain_worker_buffer_size,
-        dataloading_host_index=process_indices.index(jax.process_index()),
-        dataloading_host_count=len(process_indices),
         shuffle=config.enable_data_shuffling,
         num_epochs=None,
         data_shuffle_seed=config.data_shuffle_seed,
@@ -143,8 +135,6 @@ def make_grain_iterator(
             data_pspec=PartitionSpec(*config.data_sharding),
             worker_count=config.grain_worker_count,
             worker_buffer_size=config.grain_worker_buffer_size,
-            dataloading_host_index=process_indices.index(jax.process_index()),
-            dataloading_host_count=len(process_indices),
             shuffle=False,
             data_shuffle_seed=config.data_shuffle_seed,
         )
