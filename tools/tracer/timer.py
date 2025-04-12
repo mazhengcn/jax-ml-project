@@ -8,14 +8,14 @@ class Timer(ContextDecorator):
     Examples:
         >>> import time
         >>>
-        >>> from tools.trace import Timer
+        >>> from tools.tracer import Timer
         >>>
         >>> with Timer("examples"):
         >>>     time.sleep(1)
 
         >>> import time
         >>>
-        >>> from tools.trace import Timer
+        >>> from tools.tracer import Timer
         >>>
         >>>
         >>> @Timer("sleep")
@@ -45,7 +45,7 @@ class Timer(ContextDecorator):
         """Run when exit ContextManager or Decoraotr."""
         self.end = time.time()
 
-        from tools.logger import Logger
+        from tools import Logger
 
         logger = Logger(self.name)
         logger.debug("executed in %f ms", self._duration * 1_000)

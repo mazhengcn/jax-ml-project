@@ -22,10 +22,11 @@ dependencies = [
 
 [tool.uv]
 dev-dependencies = [
-    "mkdocs-material>=9.5.49",
-    "pre-commit>=4.0.1",
-    "pyright>=1.1.391",
-    "pytest-cov>=6.0.0",
+    "cookiecutter>=2.6.0",
+    "cookiecutter-data-science>=2.1.0",
+    "mkdocs-material>=9.5.50",
+    "pre-commit>=4.1.0",
+    "pyright>=1.1.392.post0",
     "pytest>=8.3.4",
     "ruff>=0.8.4",
     "jupyter>=1.1.1",

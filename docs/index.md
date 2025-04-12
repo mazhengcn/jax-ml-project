@@ -1,7 +1,8 @@
 # Welcome to python-uv
 
 ## What is python-uv?
-This repository contains configurations to set up a Python development environment using VSCode's Dev Container feature. The environment includes uv and Ruff.
+This repository contains configurations to set up a Python development environment using VSCode's Dev Container feature.
+The environment includes uv and Ruff.
 
 <img align="center" src="img/ruff.gif">
 
@@ -29,7 +30,7 @@ This repository contains configurations to set up a Python development environme
     │   └── tools/
     │        ├── test__config.py
     │        ├── test__logger.py
-    │        └── test__trace.py
+    │        └── test__tracer.py
     ├── tools/
     │   ├── config/
     │   │    ├── __init__.py
@@ -43,9 +44,9 @@ This repository contains configurations to set up a Python development environme
     │   │    ├── logger.py
     │   │    ├── style.py
     │   │    └── type.py
-    │   ├── trace/
+    │   ├── tracer/
     │   │    ├── __init__.py
-    │   │    └── time.py
+    │   │    └── timer.py
     │   └── __init__.py
     ├── .dockerignore
     ├── .env.local
