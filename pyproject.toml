@@ -16,8 +16,7 @@ dependencies = [
     "jax-ai-stack[grain]>=2025.1.9",
     "jax[cuda]>=0.4.38",
     "pydantic>=2.10.4",
-    "pydantic-settings>=2.7.0",
-    "tensorflow-cpu>=2.18.0",
+    "pydantic-settings>=2.7.0"
 ]
 
 [tool.uv]
@@ -35,5 +34,5 @@ dev-dependencies = [
 ]
 
 [build-system]
-requires = ["uv>=0.5.0", "uv<0.6.0"]
-build-backend = "uv"
+requires = ["hatchling"]
+build-backend = "hatchling.build"

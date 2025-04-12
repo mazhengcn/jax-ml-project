@@ -22,10 +22,10 @@ class Config:
     # Number of child processes launched to parallelize the transformations among.
     # Zero means processing runs in the same process.
     # None lets the python backend choose the value.
-    grain_worker_count: int | None = 0
+    grain_worker_count: int | None = 4
     # Count of output batches to produce in advance per worker.
     # This ensures batches are ready when the consumer requests them.
-    grain_worker_buffer_size: int = 1
+    grain_worker_buffer_size: int = 2
     # Name of TFDS dataset to use.
     dataset_name: str = "dataset"
     # Path to directory where TFDS data is stored.

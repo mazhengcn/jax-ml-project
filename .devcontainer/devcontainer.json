@@ -2,11 +2,7 @@
     "name": "jax-ai-project",
     "build": {
         "context": "..",
-        "dockerfile": "Dockerfile",
-        "args": {
-            "UV_VERSION": "latest",
-            "DEBIAN_VERSION": "bookworm"
-        }
+        "dockerfile": "Dockerfile"
     },
     "features": {
         "ghcr.io/dhoeric/features/hadolint:1": {}
@@ -30,13 +26,13 @@
             ]
         }
     },
-    "containerEnv": {
-        "DISPLAY": "dummy",
-        "PYTHONUNBUFFERED": "True",
-        "UV_PREVIEW": "true",
-        "UV_LINK_MODE": "copy",
-        "UV_PROJECT_ENVIRONMENT": "/home/vscode/.venv"
-    },
+    "mounts": [
+        {
+            "type": "volume",
+            "source": "jax-ml-venv",
+            "target": "${containerWorkspaceFolder}/.venv"
+        }
+    ],
     "postCreateCommand": "uv sync --frozen",
     "postStartCommand": "uv run pre-commit install",
     "remoteUser": "vscode"
