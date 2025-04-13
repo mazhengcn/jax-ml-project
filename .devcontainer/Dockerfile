@@ -5,7 +5,7 @@ FROM mcr.microsoft.com/devcontainers/base:debian
 #     apt-get update && apt-get install -y --no-install-recommends screen \
 #     && rm -rf /var/lib/apt/lists/*
 
-COPY --from=ghcr.io/astral-sh/uv:latest --chown=vscode: /uv /uvx /bin/
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 ENV UV_LINK_MODE=copy
 # Only use the managed Python version
 ENV UV_PYTHON_PREFERENCE=only-managed

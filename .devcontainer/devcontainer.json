@@ -27,13 +27,9 @@
         }
     },
     "mounts": [
-        {
-            "type": "volume",
-            "source": "jax-ml-venv",
-            "target": "${containerWorkspaceFolder}/.venv"
-        }
+        "source=${localWorkspaceFolderBasename}-venv,target=${containerWorkspaceFolder}/.venv,type=volume"
     ],
-    "postCreateCommand": "uv sync --frozen",
+    "postCreateCommand": "sudo chown vscode .venv && uv sync --frozen",
     "postStartCommand": "uv run pre-commit install",
     "remoteUser": "vscode"
 }
