@@ -13,15 +13,15 @@ repos:
         name: Ruff format
         description: "Run 'ruff format' for extremely fast Python formatting"
 
-  - repo: https://github.com/hadolint/hadolint
-    rev: v2.12.0
-    hooks:
-      - id: hadolint
-        name: Lint Dockerfiles
-        description: Runs hadolint to lint Dockerfiles
-        language: system
-        types: ["dockerfile"]
-        entry: hadolint
+  # - repo: https://github.com/hadolint/hadolint
+  #   rev: v2.12.0
+  #   hooks:
+  #     - id: hadolint
+  #       name: Lint Dockerfiles
+  #       description: Runs hadolint to lint Dockerfiles
+  #       language: system
+  #       types: ["dockerfile"]
+  #       entry: hadolint
 
 ci:
   autoupdate_schedule: weekly

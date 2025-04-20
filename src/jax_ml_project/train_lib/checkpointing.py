@@ -7,7 +7,7 @@ import orbax.checkpoint as ocp
 from absl import logging
 from etils import epath
 from flax import nnx
-from orbax.checkpoint.logging import abstract_logger
+from orbax.checkpoint.logging import AbstractLogger
 
 from .multihost_dataloading import MultiHostDataLoadIterator
 
@@ -19,7 +19,7 @@ def create_orbax_checkpoint_manager(  # noqa: PLR0913
     use_async: bool = True,
     save_interval_steps: int = 1,
     dataset_type: str | None = "tfds",
-    orbax_logger: abstract_logger.AbstractLogger | None = None,
+    orbax_logger: AbstractLogger | None = None,
 ) -> ocp.CheckpointManager | None:
     """Create an Orbax CheckpointManager.
 

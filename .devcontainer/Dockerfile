@@ -1,4 +1,5 @@
-FROM mcr.microsoft.com/devcontainers/base:debian
+ARG VARIANT="ubuntu"
+FROM mcr.microsoft.com/devcontainers/base:${VARIANT}
 # Install system packages
 # RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
 #     --mount=type=cache,target=/var/lib/apt,sharing=locked \

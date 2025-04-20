@@ -2,7 +2,10 @@
     "name": "jax-ai-project",
     "build": {
         "context": "..",
-        "dockerfile": "Dockerfile"
+        "dockerfile": "Dockerfile",
+        "args": {
+            "VARIANT": "ubuntu"
+        }
     },
     "features": {
         "ghcr.io/dhoeric/features/hadolint:1": {}
@@ -27,9 +30,13 @@
         }
     },
     "mounts": [
-        "source=${localWorkspaceFolderBasename}-venv,target=${containerWorkspaceFolder}/.venv,type=volume"
+        "type=volume,src=${localWorkspaceFolderBasename}-venv,dst=${containerWorkspaceFolder}/.venv",
+        "type=volume,src=uv-cache,dst=/home/vscode/.cache/uv"
     ],
-    "postCreateCommand": "sudo chown vscode .venv && uv sync --frozen",
+    "postCreateCommand": {
+        "fix-volume-permissions": "sudo chown -R $(whoami): .venv && sudo chown -R $(whoami): $HOME/.cache",
+        "sync-environment": "uv sync --all-extras --frozen"
+    },
     "postStartCommand": "uv run pre-commit install",
     "remoteUser": "vscode"
 }

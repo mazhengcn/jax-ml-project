@@ -1,38 +1,39 @@
 [project]
-name = "project"
+name = "jax-ml-project"
 version = "0.1.0"
 description = ""
 
 authors = [{ name = "Zheng Ma", email = "zhengma@sjtu.edu.cn" }]
 maintainers = [{ name = "Zheng Ma", email = "zhengma@sjtu.edu.cn" }]
 
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 readme = "README.md"
 license = { file = "LICENSE" }
 
 dependencies = [
     "clu>=0.0.12",
-    "google-cloud-logging>=3.11.3",
-    "jax-ai-stack[grain]>=2025.1.9",
-    "jax[cuda]>=0.4.38",
-    "pydantic>=2.10.4",
-    "pydantic-settings>=2.7.0"
+    "jax-ai-stack[grain]>=0.4.9",
+    "tf-nightly-cpu>=2.20.0.dev20250214",
 ]
 
-[tool.uv]
-dev-dependencies = [
+[project.optional-dependencies]
+cuda = ["jax-cuda12-plugin[with-cuda]>=0.6.0"]
+
+[tool.uv.sources]
+jax-ai-stack = { git = "https://github.com/jax-ml/jax-ai-stack" }
+
+[dependency-groups]
+dev = [
     "cookiecutter>=2.6.0",
-    "cookiecutter-data-science>=2.1.0",
-    "mkdocs-material>=9.5.50",
-    "pre-commit>=4.1.0",
-    "pyright>=1.1.392.post0",
-    "pytest>=8.3.4",
-    "ruff>=0.8.4",
+    "cookiecutter-data-science>=2.2.0",
     "jupyter>=1.1.1",
-    "penzai>=0.2.4",
-    "matplotlib>=3.10.0",
+    "matplotlib>=3.10.1",
+    "mkdocs-material>=9.6.12",
+    "penzai>=0.2.5",
+    "pre-commit>=4.2.0",
+    "ruff>=0.11.6",
 ]
 
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["uv_build>=0.6"]
+build-backend = "uv_build"
