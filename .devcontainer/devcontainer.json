@@ -1,5 +1,5 @@
 {
-    "name": "jax-ai-project",
+    "name": "jax-ml-project",
     "build": {
         "context": "..",
         "dockerfile": "Dockerfile",
