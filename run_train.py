@@ -8,8 +8,8 @@ import jax
 from absl import app, flags, logging
 from clu import platform
 
-from project.configs import default
-from project.train_lib import train
+from jax_ml_project.configs import default
+from jax_ml_project.train_lib import train
 
 FLAGS = flags.FLAGS
 

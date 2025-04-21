@@ -60,4 +60,4 @@ class RelativeError(nnx.Metric):
             jax.Array: The computed relative error value.
 
         """
-        return self.error.value / self.true.value
+        return jnp.sqrt(self.error.value / self.true.value)
