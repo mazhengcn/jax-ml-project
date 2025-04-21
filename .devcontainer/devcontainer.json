@@ -31,10 +31,10 @@
     },
     "mounts": [
         "type=volume,src=${localWorkspaceFolderBasename}-venv,dst=${containerWorkspaceFolder}/.venv",
-        "type=volume,src=uv-cache,dst=/home/vscode/.cache/uv"
+        "type=volume,src=uv-cache,dst=/tmp/uv-cache"
     ],
     "postCreateCommand": {
-        "fix-volume-permissions": "sudo chown -R $(whoami): .venv && sudo chown -R $(whoami): $HOME/.cache",
+        "fix-volume-permissions": "sudo chown -R $(whoami): .venv",
         "sync-environment": "uv sync --all-extras --frozen"
     },
     "postStartCommand": "uv run pre-commit install",
