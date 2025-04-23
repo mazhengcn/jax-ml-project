@@ -1,0 +1,23 @@
+{
+    "full_name": "Zheng Ma",
+    "email": "mazhengcn@outlook.com",
+    "github_username": "mazhengcn",
+    "project_name": "jax-ml-project",
+    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+    "project_short_description": "Python Boilerplate contains all the boilerplate you need to create a Python package.",
+    "project_version": "0.1.0",
+    "python_version": "3.12",
+    "create_author_file": "y",
+    "open_source_license": [
+        "MIT license",
+        "BSD license",
+        "ISC license",
+        "Apache Software License 2.0",
+        "GNU General Public License v3",
+        "Not open source"
+    ],
+    "_copy_without_render": [
+        ".github/*"
+    ],
+    "__gh_slug": "{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}"
+}

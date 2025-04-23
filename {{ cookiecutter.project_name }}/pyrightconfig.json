@@ -1,5 +1,5 @@
 {
-    "pythonVersion": "3.13",
+    "pythonVersion": "{{ cookiecutter.python_version }}",
     "pythonPlatform": "All",
     "venv": ".venv",
     "typeCheckingMode": "standard",

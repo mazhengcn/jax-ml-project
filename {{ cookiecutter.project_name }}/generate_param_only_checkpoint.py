@@ -8,10 +8,10 @@ from etils import epath
 from flax import nnx
 from jax.sharding import Mesh
 
-from project.configs import default
-from project.model.model import Model, ModelConfig
-from project.train_lib import checkpointing, optimizers
-from project.train_lib import utils as train_utils
+from {{ cookiecutter.project_slug }}.configs import default
+from {{ cookiecutter.project_slug }}.model.model import Model, ModelConfig
+from {{ cookiecutter.project_slug }}.train_lib import checkpointing, optimizers
+from {{ cookiecutter.project_slug }}.train_lib import utils as train_utils
 
 FLAGS = flags.FLAGS
 flags.DEFINE_string(

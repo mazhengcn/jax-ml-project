@@ -3,14 +3,14 @@ requires = ["uv_build>=0.6"]
 build-backend = "uv_build"
 
 [project]
-name = "jax-ml-project"
-version = "0.1.0"
-description = ""
+name = "{{ cookiecutter.project_name }}"
+version = "{{ cookiecutter.project_version }}"
+description = "{{ cookiecutter.project_short_description }}"
 
-authors = [{ name = "Zheng Ma", email = "zhengma@sjtu.edu.cn" }]
-maintainers = [{ name = "Zheng Ma", email = "zhengma@sjtu.edu.cn" }]
+authors = [{ name = "{{ cookiecutter.full_name }}", email = "{{ cookiecutter.email }}" }]
+maintainers = [{ name = "{{ cookiecutter.full_name }}", email = "{{ cookiecutter.email }}" }]
 
-requires-python = ">=3.12"
+requires-python = ">={{ cookiecutter.python_version }}"
 readme = "README.md"
 license = { file = "LICENSE" }
 
@@ -28,8 +28,6 @@ jax-ai-stack = { git = "https://github.com/jax-ml/jax-ai-stack" }
 
 [dependency-groups]
 dev = [
-    "cookiecutter>=2.6.0",
-    "cookiecutter-data-science>=2.2.0",
     "jupyter>=1.1.1",
     "matplotlib>=3.10.1",
     "mkdocs-material>=9.6.12",

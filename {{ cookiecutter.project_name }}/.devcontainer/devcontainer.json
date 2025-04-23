@@ -1,5 +1,5 @@
 {
-    "name": "jax-ml-project",
+    "name": "{{ cookiecutter.project_name }}",
     "build": {
         "context": "..",
         "dockerfile": "Dockerfile",
