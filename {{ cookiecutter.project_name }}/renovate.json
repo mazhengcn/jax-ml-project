@@ -12,5 +12,5 @@
         "* 0-23 * * *"
     ],
     "separateMajorMinor": false,
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/SHanghai"
 }
