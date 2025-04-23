@@ -1,1 +1,5 @@
-"""Project template for machine learning with JAX AI Stack."""
+"""Top-level package for {{ cookiecutter.project_name }}."""
+
+__author__ = """{{ cookiecutter.full_name }}"""
+__email__ = '{{ cookiecutter.email }}'
+__version__ = '{{ cookiecutter.project_version }}'

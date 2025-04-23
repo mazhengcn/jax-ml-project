@@ -34,8 +34,9 @@
         "type=volume,src=uv-cache,dst=/tmp/uv-cache"
     ],
     "postCreateCommand": {
-        "fix-volume-permissions": "sudo chown -R $(whoami): .venv",
-        "sync-environment": "uv sync --all-extras --frozen"
+        "fix-uv-cache-permissions": "sudo chown -R $(whoami): /tmp/uv-cache",
+        "fix-uv-env-permissions": "sudo chown -R $(whoami): .venv",
+        "sync-environment": "uv sync --all-extras"
     },
     "postStartCommand": "uv run pre-commit install",
     "remoteUser": "vscode"
