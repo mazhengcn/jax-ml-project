@@ -1,7 +1,7 @@
 [project]
 name = "jax-ml-project"
 version = "0.1.0"
-description = "A cookiecutter template for machine learning projects using the jax-ai-stack"
+description = "A cookiecutter template for machine learning projects using the jax-ai-stack."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [

@@ -4,7 +4,7 @@
     "github_username": "mazhengcn",
     "project_name": "jax-ml-project",
     "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
-    "project_short_description": "Python Boilerplate contains all the boilerplate you need to create a Python package.",
+    "project_short_description": "A cookiecutter template for machine learning projects using the jax-ai-stack.",
     "project_version": "0.1.0",
     "python_version": "3.12",
     "create_author_file": "y",
