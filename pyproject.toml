@@ -1,9 +1,9 @@
 [project]
 name = "jax-ml-project"
 version = "0.1.0"
-description = "Add your description here"
+description = "A cookiecutter template for machine learning projects using the jax-ai-stack"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 dependencies = [
     "cookiecutter>=2.6.0",
 ]
