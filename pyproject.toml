@@ -1,8 +1,14 @@
+[build-system]
+requires = ["uv_build>=0.6"]
+build-backend = "uv_build
+
 [project]
 name = "jax-ml-project"
 version = "0.1.0"
 description = "A cookiecutter template for machine learning projects using the jax-ai-stack."
+authors = [ { name = "Zheng Ma", email = "mazhengcn@outlook.com" } ]
 readme = "README.md"
+license = { file = "LICENSE" }
 requires-python = ">=3.12"
 dependencies = [
     "cookiecutter>=2.6.0",
