@@ -29,7 +29,7 @@ class Config:
     # Name of TFDS dataset to use.
     dataset_name: str = "dataset"
     # Path to directory where TFDS data is stored.
-    data_dir: str = "/workspaces/deeprte/data/raw_data/train"
+    data_dir: str = "/workspaces/deeprte/data/raw/train"
     # TFDS split for training dataset.
     train_split: str = "train[:80%]"
     # TFDS split for evaluation dataset.

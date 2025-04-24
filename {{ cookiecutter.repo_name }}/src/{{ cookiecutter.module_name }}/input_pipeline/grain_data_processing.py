@@ -39,6 +39,10 @@ class Dataset(grain.RandomAccessDataSource):
         """
         return self.data[index]
 
+    def __repr__(self) -> str:
+        """Return a string representation of the dataset."""
+        return f"Dataset({self.data})"
+
 
 def load_dataset(filename: str, data_dir: str) -> Data:
     """Load a dataset from a file."""
