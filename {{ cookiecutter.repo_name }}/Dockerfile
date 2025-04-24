@@ -15,7 +15,7 @@ ENV UV_PYTHON_INSTALL_DIR=/python
 # Only use the managed Python version
 ENV UV_PYTHON_PREFERENCE=only-managed
 
-WORKDIR /{{ cookiecutter.project_name }}
+WORKDIR /{{ cookiecutter.repo_name }}
 # Install Python before the project for caching
 RUN --mount=type=bind,source=.python-version,target=.python-version \
     uv python install
@@ -25,7 +25,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     uv sync --frozen --no-install-project --no-dev
 # Install the project
-COPY . /{{ cookiecutter.project_name }}
+COPY . /{{ cookiecutter.repo_name }}
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen --no-dev
 
@@ -34,6 +34,6 @@ FROM ubuntu:latest
 # Copy the Python version
 COPY --from=builder --chown=python:python /python /python
 # Copy the application from the builder
-COPY --from=builder --chown={{ cookiecutter.project_name }}:{{ cookiecutter.project_name }} /{{ cookiecutter.project_name }} /{{ cookiecutter.project_name }}
+COPY --from=builder --chown={{ cookiecutter.repo_name }}:{{ cookiecutter.repo_name }} /{{ cookiecutter.repo_name }} /{{ cookiecutter.repo_name }}
 # Place executables in the environment at the front of the path
-ENV PATH="/{{ cookiecutter.project_name }}/.venv/bin:$PATH"
+ENV PATH="/{{ cookiecutter.repo_name }}/.venv/bin:$PATH"

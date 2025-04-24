@@ -8,8 +8,8 @@ import jax
 from absl import app, flags, logging
 from clu import platform
 
-from {{ cookiecutter.project_slug }}.configs import default
-from {{ cookiecutter.project_slug }}.train_lib import train
+from {{ cookiecutter.module_name }}.configs import default
+from {{ cookiecutter.module_name }}.train_lib import train
 
 FLAGS = flags.FLAGS
 
