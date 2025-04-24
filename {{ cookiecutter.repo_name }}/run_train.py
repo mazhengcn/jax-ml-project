@@ -7,6 +7,7 @@ that can be easily tested and imported in Colab.
 import jax
 from absl import app, flags, logging
 from clu import platform
+import tensorflow as tf
 
 from {{ cookiecutter.module_name }}.configs import default
 from {{ cookiecutter.module_name }}.train_lib import train
@@ -33,7 +34,7 @@ def main(argv: list[str]) -> None:
 
     # Hide any GPUs from TensorFlow. Otherwise TF might reserve memory and make
     # it unavailable to JAX.
-    # tf.config.experimental.set_visible_devices([], "GPU")  # noqa: ERA001
+    tf.config.experimental.set_visible_devices([], "GPU")  # noqa: ERA001
 
     logging.info("JAX process: %d / %d", jax.process_index(), jax.process_count())
     logging.info("JAX local devices: %r", jax.local_devices())
