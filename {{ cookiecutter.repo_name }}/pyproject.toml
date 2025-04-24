@@ -5,10 +5,10 @@ build-backend = "uv_build"
 [project]
 name = "{{ cookiecutter.repo_name }}"
 version = "{{ cookiecutter.project_version }}"
-description = "{{ cookiecutter.project_short_description }}"
+description = "{{ cookiecutter.description }}"
 
-authors = [{ name = "{{ cookiecutter.full_name }}", email = "{{ cookiecutter.email }}" }]
-maintainers = [{ name = "{{ cookiecutter.full_name }}", email = "{{ cookiecutter.email }}" }]
+authors = [{ name = "{{ cookiecutter.author_name }}", email = "{{ cookiecutter.email }}" }]
+maintainers = [{ name = "{{ cookiecutter.author_name }}", email = "{{ cookiecutter.email }}" }]
 
 requires-python = ">={{ cookiecutter.python_version }}"
 readme = "README.md"
@@ -34,4 +34,5 @@ dev = [
     "penzai>=0.2.5",
     "pre-commit>=4.2.0",
     "ruff>=0.11.6",
+    "pytest>=8.3.5",
 ]

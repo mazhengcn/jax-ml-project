@@ -1,14 +1,13 @@
 {
-    "full_name": "Zheng Ma",
+    "author_name": "Zheng Ma",
     "email": "mazhengcn@outlook.com",
     "github_username": "mazhengcn",
     "project_name": "jax-ml-project",
-    "repo_name": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+    "repo_name": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
     "module_name": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
-    "project_short_description": "A cookiecutter template for machine learning projects using the jax-ai-stack.",
+    "description": "A cookiecutter template for machine learning projects using the jax-ai-stack.",
     "project_version": "0.0.1",
     "python_version": "3.12",
-    "create_author_file": "y",
     "open_source_license": [
         "MIT license",
         "BSD license",
@@ -17,14 +16,9 @@
         "GNU General Public License v3",
         "Not open source"
     ],
-    "use_pytest": "n",
-    "use_pypi_deployment_with_travis": "n",
-    "pypi_username": "{{ cookiecutter.github_username }}",
-    "add_pyup_badge": "n",
-    "command_line_interface": [
-        "Typer",
-        "Argparse",
-        "No command-line interface"
+    "docs": [
+        "mkdocs",
+        "none"
     ],
     "_copy_without_render": [
         ".github/*"
