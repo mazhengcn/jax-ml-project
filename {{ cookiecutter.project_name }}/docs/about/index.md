@@ -1,2 +1,0 @@
-# About
-- [LICENSE](license.md)

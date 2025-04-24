@@ -7,9 +7,6 @@
             "VARIANT": "ubuntu"
         }
     },
-    "features": {
-        "ghcr.io/dhoeric/features/hadolint:1": {}
-    },
     "customizations": {
         "vscode": {
             "extensions": [
