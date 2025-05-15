@@ -7,8 +7,12 @@ name = "{{ cookiecutter.repo_name }}"
 version = "{{ cookiecutter.project_version }}"
 description = "{{ cookiecutter.description }}"
 
-authors = [{ name = "{{ cookiecutter.author_name }}", email = "{{ cookiecutter.email }}" }]
-maintainers = [{ name = "{{ cookiecutter.author_name }}", email = "{{ cookiecutter.email }}" }]
+authors = [
+    { name = "{{ cookiecutter.author_name }}", email = "{{ cookiecutter.email }}" },
+]
+maintainers = [
+    { name = "{{ cookiecutter.author_name }}", email = "{{ cookiecutter.email }}" },
+]
 
 requires-python = ">={{ cookiecutter.python_version }}"
 readme = "README.md"
@@ -36,3 +40,38 @@ dev = [
     "ruff>=0.11.6",
     "pytest>=8.3.5",
 ]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle (error)
+    "F",   # pyflakes
+    "B",   # bugbear
+    "B9",
+    "C4",  # flake8-comprehensions
+    "SIM", # flake8-simplify
+    "I",   # isort
+    "UP",  # pyupgrade
+    "PIE", # flake8-pie
+    "PGH", # pygrep-hooks
+    "PYI", # flake8-pyi
+    "RUF",
+]
+
+ignore = [
+    # only relevant if you run a script with `python -0`,
+    # which seems unlikely for any of the scripts in this repo
+    "B011",
+    # Leave it to the formatter to split long lines and
+    # the judgement of all of us.
+    "E501",
+]
+
+[tool.ruff.lint.isort]
+required-imports = ["from __future__ import annotations"]
+
+[tool.pytest.ini_options]
+addopts = "--cov=. --cov-branch --cov-fail-under=75 --cov-report=html --cov-report=term-missing --import-mode=importlib"
+norecursedirs = [".*", "__pycache__", "htmlcov"]
+pythonpath = "."
+python_files = "test__*.py"
+testpaths = ["tests"]
