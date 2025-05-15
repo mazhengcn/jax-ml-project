@@ -69,6 +69,9 @@ ignore = [
 [tool.ruff.lint.isort]
 required-imports = ["from __future__ import annotations"]
 
+[tool.ty.environment]
+python = "./.venv"
+
 [tool.pytest.ini_options]
 addopts = "--cov=. --cov-branch --cov-fail-under=75 --cov-report=html --cov-report=term-missing --import-mode=importlib"
 norecursedirs = [".*", "__pycache__", "htmlcov"]
